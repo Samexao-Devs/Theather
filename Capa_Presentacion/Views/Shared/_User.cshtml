@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Anime Template">
+    <meta name="keywords" content="Anime, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ASJMovie</title>
+    <link rel="icon" href="~/Theater_Elementos/img/Logotype.png" type="image/png" />
+
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="~/UserPrincipal/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="~/UserPrincipal/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="~/UserPrincipal/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="~/UserPrincipal/css/plyr.css" type="text/css">
+    <link rel="stylesheet" href="~/UserPrincipal/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="~/UserPrincipal/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="~/UserPrincipal/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="~/UserPrincipal/css/style.css" type="text/css">
+    @RenderSection("script", required: false)
+</head>
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="row m-0 justify-content-center align-items-center vh-100">
+            <div class="col-sm-4">
+                <img style="" src="~/UserPrincipal/img/ASJFull.png">
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9">
+                    <div class="header__logo ">
+                        <div class="anime__details__btn">
+                            <a href="~/Home/Login" class="follow-btn">Cerrar Sesión</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3">
+                    <div class="header__nav">
+                        <nav class="header__menu mobile-menu">
+                            <ul>
+                                <li class="active">
+                                    <a href="~/User/Index">
+                                        <img src="~/UserPrincipal/img/ASJ.png" height="50" width="175">
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu-wrap"></div>
+    </header>
+    <!-- Header End -->
+    @RenderBody()
+    <!-- Footer Section Begin -->
+    <footer class="footer">
+        <div class="page-up">
+            <a href="#" id="scrollToTopButton"><span class="arrow_carrot-up"></span></a>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="footer__logo">
+                        <a href="~/User/Index"><img src="~/UserPrincipal/img/ASJ.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="footer__nav">
+                        <ul>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 ">
+                    <p style="color: #EDF2F4">
+                        Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script>
+                        All rights reserved
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+    <!-- Search model Begin -->
+    <div class="search-model">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-switch"><i class="icon_close"></i></div>
+
+        </div>
+    </div>
+    <!-- Search model end -->
+    <!-- Js Plugins -->
+    <script src="~/UserPrincipal/js/jquery-3.3.1.min.js"></script>
+    <script src="~/UserPrincipal/js/bootstrap.min.js"></script>
+    <script src="~/UserPrincipal/js/player.js"></script>
+    <script src="~/UserPrincipal/js/jquery.nice-select.min.js"></script>
+    <script src="~/UserPrincipal/js/mixitup.min.js"></script>
+    <script src="~/UserPrincipal/js/jquery.slicknav.js"></script>
+    <script src="~/UserPrincipal/js/owl.carousel.min.js"></script>
+    <script src="~/UserPrincipal/js/main.js"></script>
+    @RenderSection("modal", required: false)
+</body>
+</html>
+

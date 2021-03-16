@@ -1,0 +1,128 @@
+﻿@model Capa_Entidad.Pelicula
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_User.cshtml";
+    var r = new Random();
+    var n1 = r.Next(100);
+    var n2 = r.Next(1000);
+}
+@section script{
+    <script>
+        $(document).ready(function () {
+            /* Get iframe src attribute value i.e. YouTube video url
+            and store it in a variable */
+            var url = $("#cartoonVideo").attr('src');
+
+            /* Assign empty url value to the iframe src attribute when
+            modal hide, which stop the video playing */
+            $("#myModal").on('hide.bs.modal', function () {
+                $("#cartoonVideo").attr('src', '');
+            });
+
+            /* Assign the initially stored url back to the iframe src
+            attribute when modal is displayed again */
+            $("#myModal").on('show.bs.modal', function () {
+                $("#cartoonVideo").attr('src', url);
+            });
+        });
+    </script>
+}
+<!-- Breadcrumb Begin -->
+<div class="breadcrumb-option">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="anime__details__btn">
+                    <a href="~/User/Index" class="follow-btn"><i class="fa fa-heart-o"></i>Regresar</a>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+<!-- Breadcrumb End -->
+<!-- Anime Section Begin -->
+<section class="anime-details spad">
+    <div class="container-fluid" style="padding: 0 10%">
+        <div class="anime__details__content">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="anime__details__pic set-bg" data-setbg="@Html.DisplayFor(model => model.Imagen)">
+                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="anime__details__text">
+                        <div class="anime__details__title">
+                            <h3>@Html.DisplayFor(model => model.Titulo)</h3>
+                            <span>@Html.DisplayFor(model => model.Director.Nombre_Completo)</span>
+                        </div>
+                        <div class="anime__details__rating">
+                            <div class="rating">
+                                <a href="#"><i class="fa fa-star"></i></a>
+                                <a href="#"><i class="fa fa-star"></i></a>
+                                <a href="#"><i class="fa fa-star"></i></a>
+                                <a href="#"><i class="fa fa-star"></i></a>
+                                <a href="#"><i class="fa fa-star-half-o"></i></a>
+                            </div>
+                            <span>1.029 Votes</span>
+                        </div>
+                        <p>
+                            @Html.DisplayFor(model => model.Sipnosis)
+                        </p>
+                        <div class="anime__details__widget">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6">
+                                    <ul>
+                                        <li><span>Tipo:</span> @Html.DisplayFor(model => model.Genero.Nombre_Genero)</li>
+                                        <li><span>Estudio:</span> @Html.DisplayFor(model => model.Estudio)</li>
+                                        <li><span>Lanzamiento:</span> @Html.DisplayFor(model => model.FechaLanzamiento)</li>
+                                        <li><span>Genero Princ.:</span> @Html.DisplayFor(model => model.Genero.Nombre_Genero) </li>
+                                        <li><span>Puntaje:</span> @n1 / @n2</li>
+                                    </ul>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <ul>
+                                        <li><span>Valoración:</span> @n1 / @n2 times</li>
+                                        <li><span>Duración:</span> @Html.DisplayFor(model => model.Duracion)</li>
+                                        <li><span>Calidad:</span> HD</li>
+                                        <li><span>Vistas:</span> @n2</li>
+                                    </ul>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="anime__details__btn">
+                            
+                            <a href="#myModal" class="watch-btn" data-toggle="modal">
+                                <span>Watch Now</span> <i class="fa fa-angle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section modal {
+    <div class="m-4">
+        <!-- Modal HTML -->
+        <div id="myModal" class="modal bd-example-modal-lg fade">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <a> Trailer</a>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe  src="@Model.Media" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

@@ -1,0 +1,107 @@
+﻿@model Capa_Entidad.Loogin
+
+@{
+    ViewBag.Title = "CrearCuenta";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+
+@using (Html.BeginForm("CrearCuenta","Home", FormMethod.Post))
+{
+@Html.AntiForgeryToken()
+
+
+    <div class="wrap-login100">
+
+        <div class="login100-pic js-tilt" data-tilt>
+            <img src="~/Login_Elementos/images/ASJFull.png" alt="IMG">
+        </div>
+
+        <form class="login100-form validate-form" action="~/Home/BuscarUsuario" method="post">
+            <span class="login100-form-title">
+                Registrar Nuevo Usuario
+            </span>
+
+            <div class="wrap-input100 validate-input" data-validate="Debe escribir un usuario!">
+                <input class="input100" type="text" name="Nombre" placeholder="Digite Su Nombre">
+                <span class="focus-input100"></span>
+                <span class="symbol-input100">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                </span>
+            </div>
+
+
+
+
+            <div class="wrap-input100 validate-input" data-validate="Debe escribir un usuario!">
+                <input class="input100" type="text" name="Usuario" placeholder="Nombre De Usuario">
+                <span class="focus-input100"></span>
+                <span class="symbol-input100">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                </span>
+            </div>
+
+            <div class="wrap-input100 validate-input" data-validate="Debe escribir una contraseña!">
+                <input class="input100" type="password" name="Contrasena" placeholder="Digite La Contraseña">
+                <span class="focus-input100"></span>
+                <span class="symbol-input100">
+                    <i class="fa fa-lock" aria-hidden="true"></i>
+                </span>
+            </div>
+
+            <div class="container-login100-form-btn">
+                <input type="submit" class="login100-form-btn" value="Iniciar Sesión">
+
+            </div>
+
+
+
+          
+            <div class="text-center p-t-136">
+                <a class="txt2" href="~/Home/Login">
+                    Regresar
+                    <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+                </a>
+            </div>
+        </form>
+    </div>
+
+
+@*Codigo DE LA CLASE Default 
+<div class="form-horizontal">
+    <h4>Loogin</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.Usuario, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Usuario, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Usuario, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Contrasena, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Contrasena, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Contrasena, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>*@
+}
+
+

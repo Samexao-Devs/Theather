@@ -1,0 +1,87 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section styles{
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="~/Login_Elementos/images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Login_Elementos/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Login_Elementos/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Login_Elementos/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Login_Elementos/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Login_Elementos/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Login_Elementos/css/util.css">
+    <link rel="stylesheet" type="text/css" href="~/Login_Elementos/css/main.css">
+    <!--===============================================================================================-->
+}
+
+<div class="container-login100">
+    
+    <div class="wrap-login100">
+        @{
+       if(!string.IsNullOrEmpty(ViewBag.Message))
+       {
+            <div class="alert alert-danger" role="alert">
+                @ViewBag.Message
+            </div>
+
+       }
+        }
+        <div class="login100-pic js-tilt" data-tilt>
+            <img src="~/Login_Elementos/images/ASJFull.png" alt="IMG">
+        </div>
+
+        <form class="login100-form validate-form" action="~/Home/BuscarUsuario" method="post">
+            <span class="login100-form-title">
+                Miembro del inicio de sesion
+            </span>
+
+            <div class="wrap-input100 validate-input" data-validate="Debe escribir un usuario!">
+                <input class="input100" type="text" name="Usuario" placeholder="Usuario">
+                <span class="focus-input100"></span>
+                <span class="symbol-input100">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                </span>
+            </div>
+
+            <div class="wrap-input100 validate-input" data-validate="Debe escribir una contraseña!">
+                <input class="input100" type="password" name="Contrasena" placeholder="Contraseña">
+                <span class="focus-input100"></span>
+                <span class="symbol-input100">
+                    <i class="fa fa-lock" aria-hidden="true"></i>
+                </span>
+            </div>
+
+            <div class="container-login100-form-btn">
+                <input type="submit" class="login100-form-btn" value="Iniciar Sesión">
+
+            </div>
+        </form>
+    </div>
+</div>
+@section scripts{
+    <!--===============================================================================================-->
+    <script src="~/Login_Elementos/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Login_Elementos/vendor/bootstrap/js/popper.js"></script>
+    <script src="~/Login_Elementos/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Login_Elementos/vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Login_Elementos/vendor/tilt/tilt.jquery.min.js"></script>
+    <script>
+        $('.js-tilt').tilt({
+            scale: 1.1
+        })
+    </script>
+    <!--===============================================================================================-->
+    <script src="~/Login_Elementos/js/main.js"></script>
+}
+

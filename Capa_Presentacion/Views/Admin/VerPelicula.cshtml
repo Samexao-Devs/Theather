@@ -1,0 +1,223 @@
+﻿@model IEnumerable<Capa_Entidad.ListarPelicula_Result>
+
+@{ ViewBag.Title = "VerPelicula";
+    Layout = "~/Views/Shared/_Plantilla.cshtml"; }
+
+@*<h2>VerPelicula</h2>
+
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Titulo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id_Genero)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Duracion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id_Director)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Protagonista)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Sipnosis)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Media)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Imagen)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Estudio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FechaLanzamiento)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Titulo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id_Genero)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Duracion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id_Director)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Protagonista)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sipnosis)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Media)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Imagen)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Estudio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaLanzamiento)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+                </td>
+            </tr>
+    }
+
+        </table>*@
+
+
+@*Alex menuu*@
+
+@*<div class="card">
+        <h2>Lista De Peliculas</h2>
+
+        @section styles{
+            <link href="~/Content/assets/extra-libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
+        }
+
+
+
+
+        <div class="table-responsive">
+            <table id="zero_config" class="table table-striped table-bordered no-wrap">
+                <thead>
+                    <tr>
+
+                    </tr>
+                </thead>
+                <tbody>
+            @foreach (var item in Model)
+            {
+                    <tr>
+                        <td>
+                         <div class="col-lg-2 col-md-4 col-sm-4">
+                                <div class="product__item">
+                                    <div class="product__item__pic set-bg" data-setbg=   @Html.DisplayFor(modelItem => item.Imagen) style="background-image: url(&quot;img/trending/trend-1.jpg&quot;);">
+
+                                    </div>
+                                    <div class="product__item__text">
+                                        <ul>
+                                            <li>@Html.DisplayFor(modelItem => item.Id_Genero)</li>
+
+                                        </ul>
+                                        <h5><a href="#">@Html.DisplayFor(modelItem => item.Titulo)</a></h5>
+
+                                        <a class="item" data-toggle="tooltip" data-placement="top" title="Editar" href="@Url.Action("","Admin", new { id = item.Id })">
+                                            <i data-feather="edit" class="feather-icon"></i>
+                                        </a>
+                                        <a class="item" data-toggle="tooltip" data-placement="top" title="Eliminar" href="@Url.Action("","Admin", new { id = item.Id })">
+                                            <i data-feather="delete" class="feather-icon"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </td>
+                    </tr>
+            }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    @section  scripts{
+        <script src="~/Content/assets/extra-libs/datatables.net/js/jquery.dataTables.min.js"></script>
+        <script src="~/Content/dist/js/pages/datatable/datatable-basic.init.js"></script>
+        <script>$('#zero_config').DataTable();</script>
+    }*@
+
+
+@section styles{
+    <link href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" rel="stylesheet" />
+}
+
+<br />
+<br />
+
+<div class="col-md-12 col-sm-12">
+    <div class="x_panel">
+        <h3><i class="fa fa-braille"></i> <b>   Módulo Peliculas</b> </h3>
+        <hr style="border:1px solid;">
+
+        <br /> <br />
+        <div>
+            <a class="btn btn-info btn-lg" style="width:48%; background:#0026ff;" href="~/Admin/CrearPelicula"> <i class="fa fa-plus" aria-hidden="true"></i> <b>Agregar Nueva Pelicula</b> </a>
+        </div>
+        <br /> <br />
+        <div class="table-responsive">
+
+            <table class="table table-striped jambo_table bulk_action " id="tablabuscar">
+
+                <thead>
+                    <tr class="headings" style="color:#ffffff; font-size:18px; text-align:center; background:#172d44;">
+
+                        <th class="column-title ">
+                            @*@Html.DisplayNameFor(model => model.Cargo1)*@
+                            Titulo
+                        </th>
+                        <th class="column-title " colspan="1">
+                            Genero
+                        </th>
+                        <th class="column-title " colspan="1">
+                            Director
+                        </th>
+                        <th class="column-title " colspan="1">
+                            Fecha De Lazamiento
+                        </th>
+                        <th> Acciones </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+        <tr style="text-align:center; font-size:18px;">
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Titulo)
+            </td>
+            <td colspan="1">
+                @Html.DisplayFor(modelItem => item.Nombre_Genero)
+            </td>
+            <td colspan="1">
+                @Html.DisplayFor(modelItem => item.Nombre_Completo)
+            </td>
+            <td colspan="1">
+                @Html.DisplayFor(modelItem => item.FechaLanzamiento)
+            </td>
+            <td>
+                <a class="btn btn-primary " style="width:50px; " href=@Url.Action("EditarPeli", "Admin",new { id = item.ID_Pelicula}) }><i class="glyphicon glyphicon-pencil"> </i> </a>
+                <a class="btn btn-danger " style="width:50px; " href=@Url.Action("EliminarPelicula", "Admin",new { id = item.ID_Pelicula}) }><i class="glyphicon glyphicon-remove-sign"> </i> </a>
+            </td>
+        </tr>}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script>
+
+        $('#tablabuscar').DataTable();
+    </script>
+}

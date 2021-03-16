@@ -1,0 +1,69 @@
+﻿@model Capa_Entidad.Director
+
+@{ ViewBag.Title = "EliminarDirector";
+    Layout = "~/Views/Shared/_Plantilla.cshtml"; }
+
+
+@using (Html.BeginForm("EliminarDirector", "Admin", FormMethod.Post))
+{
+@Html.AntiForgeryToken()
+
+                <div class="col-md-12 col-sm-12">
+                    <div class="x_panel">
+                        <h3><i class="fa fa-film"></i> <b>   Módulo Director </b> </h3>
+                        <hr style="border:1px solid;">
+
+                        <div>
+                            <h4>  <i class="fa fa-trash" aria-hidden="true"></i> Eliminar Pelicula</h4>
+                            <hr>
+                            <br />
+
+                            <h3>¿Seguro Que Quieres Eliminar El Siguiente Usuario?</h3>
+                            <br />
+                            <div class="form-group">
+
+
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" style="font-size:16px;">
+                                        ID Del Director:
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <input readonly name="ID_Director" id="ID_Director" type="text" required="required" class="form-control " data-parsley-id="5" @Html.EditorFor(model => model.ID_Director) <ul class="parsley-errors-list filled" id="parsley-id-5"><li class="parsley-required parsley-error">Campo Obligatorio.</li></ul>
+                                        @Html.ValidationMessageFor(model => model.ID_Director, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <br/>
+
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" style="font-size:16px;">
+                                        ID Del Director:
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <input readonly name="ID_Director" id="ID_Director" type="text" required="required" class="form-control " data-parsley-id="5" @Html.EditorFor(model => model.Nombre_Completo) <ul class="parsley-errors-list filled" id="parsley-id-5"><li class="parsley-required parsley-error">Campo Obligatorio.</li></ul>
+                                        @Html.ValidationMessageFor(model => model.ID_Director, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+
+                                <div class="ln_solid"></div>
+                                <div class="form-group">
+                                    <div class="col-md-6 col-sm-6 offset-md-3">
+                                        <input type="submit" value="Eliminar" class="btn btn-primary" style="width:48%; height:42px; font-size:18px;" />
+
+                                        <a href="~/Admin/VerDirector" class="btn btn-danger " type="reset" style="width:48%; height:42px; font-size:18px;"> Cancelar </a>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                        
+                </div>
+                    
+                    
+                    
+                    
+                    
+        }

@@ -1,0 +1,173 @@
+﻿@model Capa_Entidad.Pelicula
+
+@{ ViewBag.Title = "CrearPelicula";
+    Layout = "~/Views/Shared/_Plantilla.cshtml";
+    List<SelectListItem> DropDownListsGenero = (List<SelectListItem>)ViewBag.ListaGenero;
+    List<SelectListItem> DropDownListDirector = (List<SelectListItem>)ViewBag.ListaDirector; }
+
+@using (Html.BeginForm("CrearPelicula", "Admin", FormMethod.Post))
+{
+@Html.AntiForgeryToken()
+                <div class="col-md-12 col-sm-12">
+                    <div class="x_panel">
+                        <h3><i class="fa fa-film"></i> <b>   Módulo Pelicula  </b> </h3>
+                        <hr style="border:1px solid;">
+
+                        <br /> <br />
+                        <div>
+                            <h4>  <i class="fa fa-plus" aria-hidden="true"></i> Insertar Pelicula</h4>
+                            <hr>
+                            <br>
+
+                            <form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
+
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" style="font-size:16px;">
+                                        Dirección URL Pelicula:
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <input name="Media" id="Media" type="text" required="required" class="form-control " data-parsley-id="5"><ul class="parsley-errors-list filled" id="parsley-id-5"><li class="parsley-required parsley-error">Campo Obligatorio.</li></ul>
+                                        @Html.ValidationMessageFor(model => model.Media, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+
+                                <br />
+
+
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" style="font-size:16px;">
+                                        Selecciona La Imagen De La Pelicuala:
+                                    </label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <input name="Imagen" id="Imagen" type="text" class="form-control" required="required" data-parsley-id="5"><ul class="parsley-errors-list filled" id="parsley-id-5"><li class="parsley-required parsley-error">Campo Obligatorio.</li></ul>
+                                        @Html.ValidationMessageFor(model => model.Imagen, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <br />
+
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" style="font-size:16px;">
+                                        Título De La Pelicula:
+                                    </label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <input name="Titulo" id="Titulo" type="text" class="form-control" required="required" data-parsley-id="5"><ul class="parsley-errors-list filled" id="parsley-id-5"><li class="parsley-required parsley-error">Campo Obligatorio.</li></ul>
+                                        @Html.ValidationMessageFor(model => model.Titulo, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <br />
+
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" style="font-size:16px;">
+                                        Seleccione El Género de La Pelicula
+                                    </label>
+                                    <div class="col-md-6 col-sm-6">
+                                        @Html.DropDownListFor(model => model.ID_Genero, DropDownListsGenero, "Seleccione un Género", new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.ID_Genero, "", new { @class = "text-danger" })
+
+
+                                    </div>
+                                </div>
+
+                                <br />
+
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" style="font-size:16px;">
+                                        Duración De La Pelicula
+                                    </label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <input name="Duracion" id="Duracion" type="text" required="required" class="form-control " data-parsley-id="5"> <ul class="parsley-errors-list filled" id="parsley-id-5"><li class="parsley-required parsley-error">Campo Obligatorio.</li></ul>
+                                        @Html.ValidationMessageFor(model => model.Duracion, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <br />
+
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" style="font-size:16px;">
+                                        Seleccione El Director de La Pelicula
+                                    </label>
+                                    <div class="col-md-6 col-sm-6">
+                                        @Html.DropDownListFor(model => model.ID_Director, DropDownListDirector, "Seleccione un Género", new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.ID_Director, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <br />
+
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" style="font-size:16px;">
+                                        Protagonistas
+                                    </label>
+                                    <div class="col-md-6 col-sm-6">
+
+                                        <textarea required="required" name="Protagonista" id="Protagonista" style="width:100%;"></textarea> <ul class="parsley-errors-list filled" id="parsley-id-5"><li class="parsley-required parsley-error">Campo Obligatorio.</li></ul>
+
+                                        @Html.ValidationMessageFor(model => model.Protagonista, "", new { @class = "text-danger" })
+                                    </div>
+
+                                </div>
+
+                                <br />
+
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" style="font-size:16px;">
+                                        Sipnosis
+                                    </label>
+                                    <div class="col-md-6 col-sm-6">
+
+                                        <textarea required="required" name="Sipnosis" id="Sipnosis" style="width:100%;"></textarea> <ul class="parsley-errors-list filled" id="parsley-id-5"><li class="parsley-required parsley-error">Campo Obligatorio.</li></ul>
+
+
+                                        @Html.ValidationMessageFor(model => model.Sipnosis, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" style="font-size:16px;">
+                                        Seleccione La Fecha De Lazamiento:
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <input id="FechaLanzamiento" name="FechaLanzamiento" class="date-picker form-control" placeholder="dd-mm-yyyy" type="text" required="required" onfocus="this.type='date'" onmouseover="this.type='date'" onclick="this.type='date'" onblur="this.type='text'" onmouseout="timeFunctionLong(this)">
+                                        <script>
+                                            function timeFunctionLong(input) {
+                                                setTimeout(function () {
+                                                    input.type = 'text';
+                                                }, 60000);
+                                            }
+                                        </script>
+                                        @Html.ValidationMessageFor(model => model.FechaLanzamiento, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" style="font-size:16px;">
+                                        Estudio Cinematografico
+                                    </label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <input name="Estudio" id="Estudio" type="text" required="required" class="form-control " data-parsley-id="5"> <ul class="parsley-errors-list filled" id="parsley-id-5"><li class="parsley-required parsley-error">Campo Obligatorio.</li></ul>
+                                        @Html.ValidationMessageFor(model => model.Estudio, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <br />
+
+                                <div class="ln_solid"></div>
+                                <div class="form-group">
+                                    <div class="col-md-6 col-sm-6 offset-md-3">
+                                        <input type="submit" value="Guardar" class="btn btn-primary " style="width:48%; height:42px; font-size:18px;" />
+                                        <a href="~/Admin/VerPelicula" class="btn btn-danger " type="reset" style="width:48%; height:42px; font-size:18px;"> Regresar </a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $.validator.messages.required = "Este campo es requerido!";
+    </script>
+}

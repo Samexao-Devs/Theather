@@ -1,0 +1,49 @@
+﻿@model Capa_Entidad.Director
+
+@{ ViewBag.Title = "CrearDirector";
+                Layout = "~/Views/Shared/_Plantilla.cshtml"; }
+
+
+
+@using (Html.BeginForm("CrearDirector", "Admin", FormMethod.Post))
+{
+@Html.AntiForgeryToken()
+
+                <div class="col-md-12 col-sm-12">
+                    <div class="x_panel">
+                        <h3><i class="fa fa-film"></i> <b>   Módulo Director  </b> </h3>
+                        <hr style="border:1px solid;">
+
+                        <br /> <br />
+                        <div>
+                            <h4>  <i class="fa fa-plus" aria-hidden="true"></i> Insertar Director</h4>
+                            <hr>
+                            <br>
+
+                            <form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
+
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name" style="font-size:16px;">
+                                       Nombre Del Director:
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <input name="Nombre_Completo" id="Nombre_Completo" type="text" required="required" class="form-control " data-parsley-id="5"><ul class="parsley-errors-list filled" id="parsley-id-5"><li class="parsley-required parsley-error">Campo Obligatorio.</li></ul>
+                                        @Html.ValidationMessageFor(model => model.Nombre_Completo, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+
+                              
+                                <br />
+
+                                <div class="ln_solid"></div>
+                                <div class="form-group">
+                                    <div class="col-md-6 col-sm-6 offset-md-3">
+                                        <input type="submit" value="Guardar" class="btn btn-primary " style="width:48%; height:42px; font-size:18px;" />
+                                        <a href="~/Admin/VerDirector" class="btn btn-danger " type="reset" style="width:48%; height:42px; font-size:18px;"> Regresar </a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>}

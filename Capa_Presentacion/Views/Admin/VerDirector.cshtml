@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Capa_Entidad.Director>
+
+@{ ViewBag.Title = "Director";
+    Layout = "~/Views/Shared/_Plantilla.cshtml"; }
+
+
+@section styles{
+    <link href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" rel="stylesheet" />
+}
+
+<br />
+<br />
+
+<div class="col-md-12 col-sm-12">
+    <div class="x_panel">
+        <h3><i class="fa fa-braille"></i> <b>   Módulo Director</b> </h3>
+        <hr style="border:1px solid;">
+
+        <br /> <br />
+        <div>
+            <a class="btn btn-info btn-lg" style="width:48%; background:#0026ff;" href="~/Admin/CrearDirector"> <i class="fa fa-plus" aria-hidden="true"></i> <b>Agregar Nuevo Director</b> </a>
+        </div>
+        <br /> <br />
+        <div class="table-responsive">
+
+            <table class="table table-striped jambo_table bulk_action " id="tablabuscar">
+
+                <thead>
+                    <tr class="headings" style="color:#ffffff; font-size:18px; text-align:center; background:#172d44;">
+
+                        <th class="column-title ">
+                            @*@Html.DisplayNameFor(model => model.Cargo1)*@
+                            ID 
+                        </th>
+                        <th class="column-title " colspan="1">
+                            Nombre Completo
+                        </th>
+                      
+                        <th> Acciones </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+        <tr style="text-align:center; font-size:18px;">
+
+            <td>
+                @Html.DisplayFor(modelItem => item.ID_Director)
+            </td>
+            <td colspan="1">
+                @Html.DisplayFor(modelItem => item.Nombre_Completo)
+            </td>
+        
+            <td>
+                <a class="btn btn-primary " style="width:50px; " href=@Url.Action("EditarDirector", "Admin",new { id = item.ID_Director}) }><i class="glyphicon glyphicon-pencil"> </i> </a>
+                <a class="btn btn-danger " style="width:50px; " href=@Url.Action("EliminarDirector", "Admin",new { id = item.ID_Director}) }><i class="glyphicon glyphicon-remove-sign"> </i> </a>
+            
+            </td>
+        </tr>
+}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script>
+
+        $('#tablabuscar').DataTable();
+    </script>
+}

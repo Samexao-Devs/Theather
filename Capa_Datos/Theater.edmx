@@ -1,0 +1,326 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TheaterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Director">
+          <Key>
+            <PropertyRef Name="ID_Director" />
+          </Key>
+          <Property Name="ID_Director" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre_Completo" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Genero">
+          <Key>
+            <PropertyRef Name="ID_Genero" />
+          </Key>
+          <Property Name="ID_Genero" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre_Genero" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Loogin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Usuario" Type="varchar" MaxLength="30" />
+          <Property Name="Contrasena" Type="varchar" MaxLength="30" />
+          <Property Name="Nombre" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Pelicula">
+          <Key>
+            <PropertyRef Name="ID_Pelicula" />
+          </Key>
+          <Property Name="ID_Pelicula" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Titulo" Type="varchar" MaxLength="30" />
+          <Property Name="ID_Genero" Type="int" />
+          <Property Name="Duracion" Type="varchar" MaxLength="30" />
+          <Property Name="ID_Director" Type="int" />
+          <Property Name="Protagonista" Type="varchar" MaxLength="30" />
+          <Property Name="Sipnosis" Type="varchar" MaxLength="500" />
+          <Property Name="Media" Type="nvarchar" MaxLength="500" />
+          <Property Name="Imagen" Type="nvarchar" MaxLength="500" />
+          <Property Name="Estudio" Type="varchar" MaxLength="50" />
+          <Property Name="FechaLanzamiento" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__Pelicula__ID_Dir__2B3F6F97">
+          <End Role="Director" Type="Self.Director" Multiplicity="0..1" />
+          <End Role="Pelicula" Type="Self.Pelicula" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Director">
+              <PropertyRef Name="ID_Director" />
+            </Principal>
+            <Dependent Role="Pelicula">
+              <PropertyRef Name="ID_Director" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pelicula__ID_Gen__2A4B4B5E">
+          <End Role="Genero" Type="Self.Genero" Multiplicity="0..1" />
+          <End Role="Pelicula" Type="Self.Pelicula" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genero">
+              <PropertyRef Name="ID_Genero" />
+            </Principal>
+            <Dependent Role="Pelicula">
+              <PropertyRef Name="ID_Genero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="CountDirector" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="CountGenero" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="CountPelicula" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="CountUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ListarPelicula" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ListarUltimaPelicula" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="TheaterModelStoreContainer">
+          <EntitySet Name="Director" EntityType="Self.Director" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Genero" EntityType="Self.Genero" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Loogin" EntityType="Self.Loogin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pelicula" EntityType="Self.Pelicula" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Pelicula__ID_Dir__2B3F6F97" Association="Self.FK__Pelicula__ID_Dir__2B3F6F97">
+            <End Role="Director" EntitySet="Director" />
+            <End Role="Pelicula" EntitySet="Pelicula" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pelicula__ID_Gen__2A4B4B5E" Association="Self.FK__Pelicula__ID_Gen__2A4B4B5E">
+            <End Role="Genero" EntitySet="Genero" />
+            <End Role="Pelicula" EntitySet="Pelicula" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TheaterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="TheaterEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Director" EntityType="TheaterModel.Director" />
+          <EntitySet Name="Genero" EntityType="TheaterModel.Genero" />
+          <EntitySet Name="Loogin" EntityType="TheaterModel.Loogin" />
+          <EntitySet Name="Pelicula" EntityType="TheaterModel.Pelicula" />
+          <AssociationSet Name="FK__Pelicula__ID_Dir__2B3F6F97" Association="TheaterModel.FK__Pelicula__ID_Dir__2B3F6F97">
+            <End Role="Director" EntitySet="Director" />
+            <End Role="Pelicula" EntitySet="Pelicula" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pelicula__ID_Gen__2A4B4B5E" Association="TheaterModel.FK__Pelicula__ID_Gen__2A4B4B5E">
+            <End Role="Genero" EntitySet="Genero" />
+            <End Role="Pelicula" EntitySet="Pelicula" />
+          </AssociationSet>
+          <FunctionImport Name="CountDirector" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="CountGenero" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="CountPelicula" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="ListarPelicula" ReturnType="Collection(TheaterModel.ListarPelicula_Result)" />
+          <FunctionImport Name="ListarUltimaPelicula" ReturnType="Collection(TheaterModel.ListarUltimaPelicula_Result)" />
+          <FunctionImport Name="CountUsuario" />
+        </EntityContainer>
+        <EntityType Name="Director">
+          <Key>
+            <PropertyRef Name="ID_Director" />
+          </Key>
+          <Property Name="ID_Director" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre_Completo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Pelicula" Relationship="TheaterModel.FK__Pelicula__ID_Dir__2B3F6F97" FromRole="Director" ToRole="Pelicula" />
+        </EntityType>
+        <EntityType Name="Genero">
+          <Key>
+            <PropertyRef Name="ID_Genero" />
+          </Key>
+          <Property Name="ID_Genero" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre_Genero" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Pelicula" Relationship="TheaterModel.FK__Pelicula__ID_Gen__2A4B4B5E" FromRole="Genero" ToRole="Pelicula" />
+        </EntityType>
+        <EntityType Name="Loogin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Usuario" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Contrasena" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Pelicula">
+          <Key>
+            <PropertyRef Name="ID_Pelicula" />
+          </Key>
+          <Property Name="ID_Pelicula" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titulo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ID_Genero" Type="Int32" />
+          <Property Name="Duracion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ID_Director" Type="Int32" />
+          <Property Name="Protagonista" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Sipnosis" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Media" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Imagen" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Estudio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FechaLanzamiento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Director" Relationship="TheaterModel.FK__Pelicula__ID_Dir__2B3F6F97" FromRole="Pelicula" ToRole="Director" />
+          <NavigationProperty Name="Genero" Relationship="TheaterModel.FK__Pelicula__ID_Gen__2A4B4B5E" FromRole="Pelicula" ToRole="Genero" />
+        </EntityType>
+        <Association Name="FK__Pelicula__ID_Dir__2B3F6F97">
+          <End Type="TheaterModel.Director" Role="Director" Multiplicity="0..1" />
+          <End Type="TheaterModel.Pelicula" Role="Pelicula" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Director">
+              <PropertyRef Name="ID_Director" />
+            </Principal>
+            <Dependent Role="Pelicula">
+              <PropertyRef Name="ID_Director" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pelicula__ID_Gen__2A4B4B5E">
+          <End Type="TheaterModel.Genero" Role="Genero" Multiplicity="0..1" />
+          <End Type="TheaterModel.Pelicula" Role="Pelicula" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genero">
+              <PropertyRef Name="ID_Genero" />
+            </Principal>
+            <Dependent Role="Pelicula">
+              <PropertyRef Name="ID_Genero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="ListarPelicula_Result">
+          <Property Type="Int32" Name="ID_Pelicula" Nullable="false" />
+          <Property Type="String" Name="Titulo" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="Id_Genero" Nullable="true" />
+          <Property Type="String" Name="Nombre_Genero" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Duracion" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="Id_Director" Nullable="true" />
+          <Property Type="String" Name="Nombre_Completo" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Protagonista" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Sipnosis" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Media" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Imagen" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Estudio" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="FechaLanzamiento" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="ListarUltimaPelicula_Result">
+          <Property Type="Int32" Name="ID_Pelicula" Nullable="false" />
+          <Property Type="String" Name="Titulo" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="Id_Genero" Nullable="true" />
+          <Property Type="String" Name="Nombre_Genero" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Duracion" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="Id_Director" Nullable="true" />
+          <Property Type="String" Name="Nombre_Completo" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Protagonista" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Sipnosis" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Media" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Imagen" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Estudio" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="FechaLanzamiento" Nullable="true" MaxLength="50" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TheaterModelStoreContainer" CdmEntityContainer="TheaterEntities">
+          <EntitySetMapping Name="Director">
+            <EntityTypeMapping TypeName="TheaterModel.Director">
+              <MappingFragment StoreEntitySet="Director">
+                <ScalarProperty Name="Nombre_Completo" ColumnName="Nombre_Completo" />
+                <ScalarProperty Name="ID_Director" ColumnName="ID_Director" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Genero">
+            <EntityTypeMapping TypeName="TheaterModel.Genero">
+              <MappingFragment StoreEntitySet="Genero">
+                <ScalarProperty Name="Nombre_Genero" ColumnName="Nombre_Genero" />
+                <ScalarProperty Name="ID_Genero" ColumnName="ID_Genero" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Loogin">
+            <EntityTypeMapping TypeName="TheaterModel.Loogin">
+              <MappingFragment StoreEntitySet="Loogin">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pelicula">
+            <EntityTypeMapping TypeName="TheaterModel.Pelicula">
+              <MappingFragment StoreEntitySet="Pelicula">
+                <ScalarProperty Name="FechaLanzamiento" ColumnName="FechaLanzamiento" />
+                <ScalarProperty Name="Estudio" ColumnName="Estudio" />
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+                <ScalarProperty Name="Media" ColumnName="Media" />
+                <ScalarProperty Name="Sipnosis" ColumnName="Sipnosis" />
+                <ScalarProperty Name="Protagonista" ColumnName="Protagonista" />
+                <ScalarProperty Name="ID_Director" ColumnName="ID_Director" />
+                <ScalarProperty Name="Duracion" ColumnName="Duracion" />
+                <ScalarProperty Name="ID_Genero" ColumnName="ID_Genero" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="ID_Pelicula" ColumnName="ID_Pelicula" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="CountDirector" FunctionName="TheaterModel.Store.CountDirector" />
+          <FunctionImportMapping FunctionImportName="CountGenero" FunctionName="TheaterModel.Store.CountGenero" />
+          <FunctionImportMapping FunctionImportName="CountPelicula" FunctionName="TheaterModel.Store.CountPelicula" />
+          <FunctionImportMapping FunctionImportName="ListarPelicula" FunctionName="TheaterModel.Store.ListarPelicula">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TheaterModel.ListarPelicula_Result">
+                <ScalarProperty Name="ID_Pelicula" ColumnName="ID_Pelicula" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Id_Genero" ColumnName="Id_Genero" />
+                <ScalarProperty Name="Nombre_Genero" ColumnName="Nombre_Genero" />
+                <ScalarProperty Name="Duracion" ColumnName="Duracion" />
+                <ScalarProperty Name="Id_Director" ColumnName="Id_Director" />
+                <ScalarProperty Name="Nombre_Completo" ColumnName="Nombre_Completo" />
+                <ScalarProperty Name="Protagonista" ColumnName="Protagonista" />
+                <ScalarProperty Name="Sipnosis" ColumnName="Sipnosis" />
+                <ScalarProperty Name="Media" ColumnName="Media" />
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+                <ScalarProperty Name="Estudio" ColumnName="Estudio" />
+                <ScalarProperty Name="FechaLanzamiento" ColumnName="FechaLanzamiento" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ListarUltimaPelicula" FunctionName="TheaterModel.Store.ListarUltimaPelicula">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TheaterModel.ListarUltimaPelicula_Result">
+                <ScalarProperty Name="ID_Pelicula" ColumnName="ID_Pelicula" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Id_Genero" ColumnName="Id_Genero" />
+                <ScalarProperty Name="Nombre_Genero" ColumnName="Nombre_Genero" />
+                <ScalarProperty Name="Duracion" ColumnName="Duracion" />
+                <ScalarProperty Name="Id_Director" ColumnName="Id_Director" />
+                <ScalarProperty Name="Nombre_Completo" ColumnName="Nombre_Completo" />
+                <ScalarProperty Name="Protagonista" ColumnName="Protagonista" />
+                <ScalarProperty Name="Sipnosis" ColumnName="Sipnosis" />
+                <ScalarProperty Name="Media" ColumnName="Media" />
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+                <ScalarProperty Name="Estudio" ColumnName="Estudio" />
+                <ScalarProperty Name="FechaLanzamiento" ColumnName="FechaLanzamiento" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CountUsuario" FunctionName="TheaterModel.Store.CountUsuario" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
